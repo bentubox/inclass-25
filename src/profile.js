@@ -1,3 +1,5 @@
+const uploadImage = require('../uploadCloudinary')
+
 const profile = {
         username:"Dummy",
         headline: 'Default Headline',
@@ -161,11 +163,13 @@ const getAvatars = (req, res) => {
 
     res.send({ headlines: results })
 }
-const updateAvatar = (req, res) => {
+const uploadAvatar = (req, res) => {
     console.log('Payload received:', req.body)
     if (!req.user) {
         req.user = 'Dummy'
     }
+    console.log(req.fileurl)
+    profile.avatar = req.fileurl
     res.send({ username: req.user, avatar: profile.avatar})
 }
 
@@ -184,5 +188,6 @@ module.exports = (app) => {
     app.put('/zipcode', updateZipcode)
 
     app.get('/avatars/:users?*', getAvatars)
-    app.put('/avatar', updateAvatar)
+    app.put('/avatar', uploadImage('avatar'), uploadAvatar)
+
 }

@@ -2,9 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
-const app = express()
+const env = require('node-env-file')
+env(__dirname + '/.env')
 
-require('./uploadCloudinary.js').setup(app)
+const app = express()
 
 app.use(bodyParser.json())
 app.use(cookieParser())

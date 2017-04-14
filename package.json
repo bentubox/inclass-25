@@ -22,7 +22,8 @@
     "formdata-parser": "^1.0.2",
     "md5": "^2.2.1",
     "mongoose": "^4.9.2",
-    "multer": "^1.3.0"
+    "multer": "^1.3.0",
+    "node-env-file": "^0.1.8"
   },
   "devDependencies": {
     "babel-core": "^6.8.0",
